@@ -22,7 +22,7 @@ app.use(ratelimiter);
 app.use(pinoHttpMiddleware)
 
 app.use('/v1', urlRecordRoute);
-app.use('/v1',urlRedirectRouter)
+app.use('/v1',urlRedirectRouter);
 
 //TODO: 错误响应
 
