@@ -9,13 +9,20 @@ const dbconfig ={
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
+  databaseUrl: process.env.DATBASE_URL
 }
 
-const sequelize = new Sequelize(dbconfig.database, dbconfig.username, dbconfig.password, {
+const sequelize = new Sequelize(dbconfig.database, dbconfig.username, dbconfig.password,dbconfig.databaseUrl, {
   host: dbconfig.host,
   dialect: 'postgres',
   port: dbconfig.port,
-  logging: (...msg) => logger.info(msg)
+  logging: (...msg) => logger.info(msg),
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
 });
 
 //测试数据库连接
