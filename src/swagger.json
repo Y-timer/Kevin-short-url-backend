@@ -1,0 +1,196 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "默认模块",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [],
+  "paths": {
+    "/urlRecord": {
+      "post": {
+        "summary": "Create URL Record",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "originURL": "https://react.dev/reference/rsc/model"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "1": {
+                    "summary": "已创建",
+                    "value": {
+                      "message": "URL record created successfully",
+                      "data": {
+                        "id": "1775896303158",
+                        "originURL": "https://react.dev/reference/rsc/model",
+                        "shortURL": "http://localhost:5432/rKQbkM",
+                        "urlCode": "rKQbkM",
+                        "updatedAt": "2026-04-11T08:31:43.158Z",
+                        "createdAt": "2026-04-11T08:31:43.158Z"
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "成功示例",
+                    "value": {
+                      "message": "URL record created successfully",
+                      "data": {
+                        "id": "1775902199284",
+                        "originURL": "https://github.com/scottie1984/swagger-ui-express?tab=readme-ov-file",
+                        "shortURL": "http://localhost:5432/dshdghas",
+                        "urlCode": "dshdghas",
+                        "updatedAt": "2026-04-11T10:09:59.284Z",
+                        "createdAt": "2026-04-11T10:09:59.284Z"
+                      }
+                    }
+                  },
+                  "3": {
+                    "summary": "成功示例",
+                    "value": {
+                      "message": "URL record created successfully",
+                      "data": {
+                        "id": "1775902259402",
+                        "originURL": "https://cn.vuejs.org/guide/components/provide-inject.html",
+                        "shortURL": "http://localhost:5432/FoJrvw",
+                        "urlCode": "FoJrvw",
+                        "updatedAt": "2026-04-11T10:10:59.403Z",
+                        "createdAt": "2026-04-11T10:10:59.403Z"
+                      }
+                    }
+                  },
+                  "4": {
+                    "summary": "异常示例",
+                    "value": {
+                      "message": "Invalid origin URL"
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/{urlCode}": {
+      "get": {
+        "summary": "Get origin url",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "urlCode",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": "8dPn23",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功",
+                    "value": {
+                      "message": "Success",
+                      "data": "https://react.dev/reference/rsc/server-components"
+                    }
+                  },
+                  "3": {
+                    "summary": "成功示例",
+                    "value": {
+                      "message": "Success",
+                      "data": "https://react.dev/reference/rsc/server-components"
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ]
+                },
+                "example": {
+                  "message": "URL code not found"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "webhooks": {},
+  "components": {
+    "schemas": {},
+    "responses": {},
+    "securitySchemes": {}
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/v1",
+      "description": "开发环境"
+    }
+  ],
+  "security": []
+}
