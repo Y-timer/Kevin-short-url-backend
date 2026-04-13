@@ -2,33 +2,21 @@
 import { Sequelize } from 'sequelize';
 import { logger } from './loggerHelper.js';
 
-// //从.env中获取相关信息
-// const dbconfig ={
-//   host: process.env.DB_HOST,
-//   port: process.env.DB_PORT,
-//   username: process.env.DB_USER,
-//   password: process.env.DB_PASSWORD,
-//   database: process.env.DB_NAME,
-//   // databaseUrl: process.env.DATBASE_URL
-// }
+//从.env中获取相关信息
+const dbconfig ={
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  // databaseUrl: process.env.DATBASE_URL
+}
 
-// const sequelize = new Sequelize(dbconfig.database, dbconfig.username, dbconfig.password,{
-//   host: dbconfig.host,
-//   dialect: 'postgres',
-//   port: dbconfig.port,
-//   logging: (...msg) => logger.info(msg),
-// });
-
-import { Sequelize } from 'sequelize';
-
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
+const sequelize = new Sequelize(dbconfig.database, dbconfig.username, dbconfig.password,{
+  host: dbconfig.host,
   dialect: 'postgres',
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-  },
+  port: dbconfig.port,
+  logging: (...msg) => logger.info(msg),
 });
 
 //测试数据库连接
